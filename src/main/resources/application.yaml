@@ -1,6 +1,7 @@
 spring.datasource.url: jdbc:h2:file:./camunda-h2-database
 
 camunda.bpm:
+  default-number-of-retries: 10
   history-level: full
   admin-user:
     id: demo

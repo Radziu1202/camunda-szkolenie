@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_00or0sb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
   <decision id="check_status" name="sprawdz status" camunda:historyTimeToLive="180">
-    <decisionTable id="DecisionTable_0mywn6v">
+    <decisionTable id="DecisionTable_0mywn6v" hitPolicy="FIRST">
       <input id="Input_1" label="status">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text>status</text>
