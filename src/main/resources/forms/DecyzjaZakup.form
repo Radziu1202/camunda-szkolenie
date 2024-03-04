@@ -1,0 +1,26 @@
+{
+  "components": [
+    {
+      "label": "Cena mieszkania ",
+      "type": "textfield",
+      "id": "Field_123txgr",
+      "key": "cenaMieszkania",
+      "disabled": true
+    },
+    {
+      "label": "Czy chcesz zakupić mieszkanie ",
+      "type": "checkbox",
+      "id": "Field_0s4fv4i",
+      "key": "decyzja_zakup"
+    }
+  ],
+  "type": "default",
+  "id": "decyzjaZakup",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.3.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

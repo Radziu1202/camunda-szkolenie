@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_15uskwe" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+  <decision id="dostepnoscMieszkania" name="dostepnoscMieszkania" camunda:historyTimeToLive="180">
+    <decisionTable id="decisionTable_1" hitPolicy="FIRST">
+      <input id="input_1" label="Metraż">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>podanie_metraz</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ugy73s" label="Liczba pokoi">
+        <inputExpression id="LiteralExpression_1jnbxae" typeRef="integer">
+          <text>podanie_liczbaPokoi</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1vynn5o" label="Mieszkanie na osiedlu strzeżonym">
+        <inputExpression id="LiteralExpression_0hetfgs" typeRef="Boolean">
+          <text>podanie_czyStrzezone</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_04e446t" label="Mieszkanie z balkonem">
+        <inputExpression id="LiteralExpression_10l1yum" typeRef="Boolean">
+          <text>podanie_czyBalkon</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_068k8ne" label="Piętro">
+        <inputExpression id="LiteralExpression_1nze9tb" typeRef="integer">
+          <text>podanie_pietro</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0r1my00" label="Cena za metr">
+        <inputExpression id="LiteralExpression_1sq2urv" typeRef="integer">
+          <text>podanie_cenaZaMetr</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="decyzja_czyPozytywna" name="decyzja_czyPozytywna" typeRef="boolean" />
+      <rule id="DecisionRule_0yty6e8">
+        <inputEntry id="UnaryTests_0vplnhh">
+          <text>[20..40]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y3783n">
+          <text>[1..2]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lwl6ab">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ein9q">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kbeez3">
+          <text>[1..4]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tw5je7">
+          <text>[6000..9000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l69adp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bupys1">
+        <inputEntry id="UnaryTests_19m8mpl">
+          <text>[40..70]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11r4xog">
+          <text>[2..4]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p8ysdi">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e2x8yv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17bpnsi">
+          <text>[3..10]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01a73dz">
+          <text>[7000..10000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ciob73">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02csn23">
+        <inputEntry id="UnaryTests_08nis7l">
+          <text>[70..100]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_037g9xj">
+          <text>[3..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1csfeme">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dvnkgw">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06i5xv7">
+          <text>[2..6]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1noisa4">
+          <text>[9000..14000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hs8pyi">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14hp9ss">
+        <inputEntry id="UnaryTests_102iv0f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1acxojl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wgr8rs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lyczts">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pjpj0g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uhef99">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13ho4w7">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0wyr6jv">
+      <dmndi:DMNShape id="DMNShape_1lk455l" dmnElementRef="dostepnoscMieszkania">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

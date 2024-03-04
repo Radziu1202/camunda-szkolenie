@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="test_tabela" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <decision id="test_tabela_id" name="składka" camunda:historyTimeToLive="180">
+    <informationRequirement id="InformationRequirement_03vgmkb">
+      <requiredDecision href="#Decision_11dfbhq" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0yii2se">
+      <input id="Input_1" label="name_length">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>name_length</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0m7jpth">
+          <text>"long","short"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_08tguxi" label="kwota">
+        <inputExpression id="LiteralExpression_17p4780" typeRef="integer">
+          <text>kwota</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="skladka" name="skladka" typeRef="integer" />
+      <rule id="DecisionRule_1hqtzhn">
+        <inputEntry id="UnaryTests_0iixat0">
+          <text>"long"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n8ol94">
+          <text>[0..100]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mz909t">
+          <text>1000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qrzrl4">
+        <inputEntry id="UnaryTests_0rejwva">
+          <text>"long"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n0jp5p">
+          <text>[101..400]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cfyo62">
+          <text>2000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03nlco2">
+        <inputEntry id="UnaryTests_1xjlcti">
+          <text>"long"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oqx4kv">
+          <text>[401..500]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1res4mv">
+          <text>3000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f1mb0v">
+        <inputEntry id="UnaryTests_1d7s68r">
+          <text>"short"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_174t93o">
+          <text>[501..700]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hqs19x">
+          <text>4000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05mi3va">
+        <inputEntry id="UnaryTests_1vge4sz">
+          <text>"short"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rusgwi">
+          <text>[701..900]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17dy1qt">
+          <text>5000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t3ahhz">
+        <inputEntry id="UnaryTests_1x6c8su">
+          <text>"short"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03a6j96">
+          <text>&gt;= 901</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gjgy0x">
+          <text>6000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_11dfbhq" name="imię i nazwisko" camunda:historyTimeToLive="180">
+    <variable id="InformationItem_1pb0ojn" name="name_length" typeRef="string" />
+    <literalExpression id="LiteralExpression_0qd7qho" expressionLanguage="javascript">
+      <text>var main = function(){
+       if(imie.length&gt;5 &amp;&amp;  nazwisko.length&gt;8){
+           return "long";
+        }
+        return "short";
+
+}
+
+main();</text>
+    </literalExpression>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="test_tabela_id">
+        <dc:Bounds height="80" width="180" x="360" y="90" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0r912w4" dmnElementRef="Decision_11dfbhq">
+        <dc:Bounds height="80" width="180" x="160" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1xr9121" dmnElementRef="InformationRequirement_03vgmkb">
+        <di:waypoint x="250" y="270" />
+        <di:waypoint x="450" y="190" />
+        <di:waypoint x="450" y="170" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

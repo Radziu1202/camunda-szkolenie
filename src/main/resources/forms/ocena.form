@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "label": "Ocena",
+      "type": "number",
+      "id": "Field_0viletm",
+      "key": "ocena",
+      "defaultValue": 5,
+      "validate": {
+        "max": 10,
+        "min": 1
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_16k808n",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.3.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

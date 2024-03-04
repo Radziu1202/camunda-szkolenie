@@ -1,0 +1,61 @@
+{
+  "components": [
+    {
+      "label": "Metraż",
+      "type": "number",
+      "id": "Field_1snsu3u",
+      "key": "podanie_metraz",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "liczba pokoi",
+      "type": "number",
+      "id": "Field_1u8doe9",
+      "key": "podanie_liczbaPokoi",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "cena za metr",
+      "type": "number",
+      "id": "Field_0yt1rjl",
+      "key": "podanie_cenaZaMetr",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Balkon",
+      "type": "checkbox",
+      "id": "Field_0osphub",
+      "key": "podanie_czyBalkon"
+    },
+    {
+      "label": "mieszkanie na osiedlu strzeżonym",
+      "type": "checkbox",
+      "id": "Field_1ggqhos",
+      "key": "podanie_czyStrzezone"
+    },
+    {
+      "label": "piętro",
+      "type": "number",
+      "id": "Field_1iulnud",
+      "key": "podanie_pietro",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "zlozeniePodania",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.3.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "label": "Kwota do zapłaty",
+      "type": "number",
+      "id": "Field_04dkgot",
+      "key": "cenaMieszkania",
+      "disabled": true
+    },
+    {
+      "label": "wprowadź kwotę",
+      "type": "number",
+      "id": "Field_1c8sgq3",
+      "key": "oplacona_kwota",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "wykonanieOplaty",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.3.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

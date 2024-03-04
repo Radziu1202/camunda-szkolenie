@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1uqllvs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:process id="proces_fakturowania" name="faktury_proces" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0xzxgrr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_16qpd4t">
+      <bpmn:incoming>Flow_02t13va</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0xzxgrr" sourceRef="StartEvent_1" targetRef="Activity_12ntd9w" />
+    <bpmn:sequenceFlow id="Flow_02t13va" sourceRef="Activity_15a1ql5" targetRef="Event_16qpd4t" />
+    <bpmn:sequenceFlow id="Flow_1xfwdol" sourceRef="Activity_12ntd9w" targetRef="Activity_15a1ql5" />
+    <bpmn:serviceTask id="Activity_12ntd9w" name="stwórz faktury" camunda:class="com.example.workflow.Assign">
+      <bpmn:incoming>Flow_0xzxgrr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xfwdol</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:subProcess id="Activity_15a1ql5">
+      <bpmn:incoming>Flow_1xfwdol</bpmn:incoming>
+      <bpmn:outgoing>Flow_02t13va</bpmn:outgoing>
+      <bpmn:startEvent id="Event_0cuz7h0">
+        <bpmn:outgoing>Flow_0ig3o9p</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:endEvent id="Event_0wznicm">
+        <bpmn:incoming>Flow_0pzfhzy</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:userTask id="Activity_1tk6c3c" name="zaksięguj faktury" camunda:formRef="ksiegowanie" camunda:formRefBinding="latest" camunda:assignee="user">
+        <bpmn:extensionElements />
+        <bpmn:incoming>Flow_0ig3o9p</bpmn:incoming>
+        <bpmn:outgoing>Flow_0pzfhzy</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_0ig3o9p" sourceRef="Event_0cuz7h0" targetRef="Activity_1tk6c3c" />
+      <bpmn:sequenceFlow id="Flow_0pzfhzy" sourceRef="Activity_1tk6c3c" targetRef="Event_0wznicm" />
+    </bpmn:subProcess>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="proces_fakturowania">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16qpd4t_di" bpmnElement="Event_16qpd4t">
+        <dc:Bounds x="892" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y8f38h_di" bpmnElement="Activity_12ntd9w">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n0kmrn_di" bpmnElement="Activity_15a1ql5" isExpanded="true">
+        <dc:Bounds x="460" y="77" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cuz7h0_di" bpmnElement="Event_0cuz7h0">
+        <dc:Bounds x="500" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0wznicm_di" bpmnElement="Event_0wznicm">
+        <dc:Bounds x="742" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jebbpa_di" bpmnElement="Activity_1tk6c3c">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ig3o9p_di" bpmnElement="Flow_0ig3o9p">
+        <di:waypoint x="536" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pzfhzy_di" bpmnElement="Flow_0pzfhzy">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="742" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xzxgrr_di" bpmnElement="Flow_0xzxgrr">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02t13va_di" bpmnElement="Flow_02t13va">
+        <di:waypoint x="810" y="177" />
+        <di:waypoint x="892" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xfwdol_di" bpmnElement="Flow_1xfwdol">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="460" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

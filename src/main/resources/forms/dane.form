@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "label": "Imię",
+      "type": "textfield",
+      "id": "Field_1sqg0fi",
+      "key": "imie",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Nazwisko",
+      "type": "textfield",
+      "id": "Field_0pmz9ji",
+      "key": "nazwisko",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Kwota",
+      "type": "number",
+      "id": "Field_1d70tlv",
+      "key": "kwota",
+      "validate": {
+        "min": 0,
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "dane",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.3.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

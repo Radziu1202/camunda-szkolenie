@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_00p0y39" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+  <bpmn:process id="WycenaMieszkania" name="Wycena Mieszkania" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_17k8swj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1nd1hmf">
+      <bpmn:incoming>SequenceFlow_1l3ufaz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_17k8swj" sourceRef="StartEvent_1" targetRef="ExclusiveGateway_0303i4z" />
+    <bpmn:scriptTask id="Task_1o03uq0" name="obliczenie ceny za metraz" scriptFormat="groovy">
+      <bpmn:incoming>SequenceFlow_11a9svd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_197831w</bpmn:outgoing>
+      <bpmn:script>int kwota = 0;
+
+if (podanie_metraz &lt; 20  || podanie_metraz &gt; 200 ) {
+
+execution.setVariable("correct", false);
+
+} else if (podanie_cenaZaMetr &lt;6000) {
+  
+execution.setVariable("correct", false);
+
+}else if (podanie_liczbaPokoi &lt; 1 || podanie_liczbaPokoi &gt; 6) {
+  
+execution.setVariable("correct", false);
+
+}; else{
+kwota += (podanie_metraz *podanie_cenaZaMetr);
+
+execution.setVariable("kwota", kwota);
+execution.setVariable("correct", true);
+
+}</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Task_1nm5voc" name="obliczanie ceny za dodatki" scriptFormat="groovy">
+      <bpmn:incoming>SequenceFlow_0ds7ec7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_04rqo6z</bpmn:outgoing>
+      <bpmn:script>int kwota2= 0;
+
+if (podanie_czyBalkon ==true  ) {
+kwota2 +=50000;
+}
+if (podanie_czyStrzezone ==true) {  
+kwota2 += 50000;
+}
+if(podanie_platnoscGotowka){
+ kwota2 -= 30000;
+}
+execution.setVariable("kwota2", kwota2);</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:parallelGateway id="ExclusiveGateway_0303i4z">
+      <bpmn:incoming>SequenceFlow_17k8swj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ds7ec7</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_11a9svd</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_0ds7ec7" sourceRef="ExclusiveGateway_0303i4z" targetRef="Task_1nm5voc" />
+    <bpmn:sequenceFlow id="SequenceFlow_11a9svd" sourceRef="ExclusiveGateway_0303i4z" targetRef="Task_1o03uq0" />
+    <bpmn:endEvent id="EndEvent_052832j" name="Nie mozna okreslic ceny">
+      <bpmn:incoming>SequenceFlow_0w7r44v</bpmn:incoming>
+      <bpmn:errorEventDefinition errorRef="Error_0ijn8b3" />
+    </bpmn:endEvent>
+    <bpmn:parallelGateway id="ExclusiveGateway_177f39b">
+      <bpmn:incoming>SequenceFlow_04rqo6z</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_197831w</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ihk2ik</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_04rqo6z" sourceRef="Task_1nm5voc" targetRef="ExclusiveGateway_177f39b" />
+    <bpmn:sequenceFlow id="SequenceFlow_197831w" sourceRef="Task_1o03uq0" targetRef="ExclusiveGateway_177f39b" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ihk2ik" sourceRef="ExclusiveGateway_177f39b" targetRef="ExclusiveGateway_0j0d1jq" />
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0j0d1jq" name="Czy poprawna cena">
+      <bpmn:incoming>SequenceFlow_0ihk2ik</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19ub73y</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0w7r44v</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_19ub73y" name="Tak" sourceRef="ExclusiveGateway_0j0d1jq" targetRef="ScriptTask_09xni5k">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${correct}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_0w7r44v" name="nie" sourceRef="ExclusiveGateway_0j0d1jq" targetRef="EndEvent_052832j">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!correct}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:scriptTask id="ScriptTask_09xni5k" name="obliczanie ceny za dodatki" scriptFormat="groovy">
+      <bpmn:incoming>SequenceFlow_19ub73y</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1l3ufaz</bpmn:outgoing>
+      <bpmn:script>int suma = 0;
+
+suma += (kwota + kwota2);
+
+
+execution.setVariable("cenaMieszkania", suma);</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1l3ufaz" sourceRef="ScriptTask_09xni5k" targetRef="EndEvent_1nd1hmf" />
+  </bpmn:process>
+  <bpmn:error id="Error_0ijn8b3" name="PriceError" errorCode="303" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WycenaMieszkania">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="139" y="237" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1nd1hmf_di" bpmnElement="EndEvent_1nd1hmf">
+        <dc:Bounds x="970" y="237" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_09yt9ae_di" bpmnElement="Task_1o03uq0">
+        <dc:Bounds x="383" y="357" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0bsdfhq_di" bpmnElement="Task_1nm5voc">
+        <dc:Bounds x="383" y="215" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_0wg7tat_di" bpmnElement="ExclusiveGateway_0303i4z">
+        <dc:Bounds x="236" y="230" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_072g45d_di" bpmnElement="EndEvent_052832j">
+        <dc:Bounds x="661" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="647" y="77" width="65" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_1yt70h7_di" bpmnElement="ExclusiveGateway_177f39b">
+        <dc:Bounds x="524" y="230" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0j0d1jq_di" bpmnElement="ExclusiveGateway_0j0d1jq" isMarkerVisible="true">
+        <dc:Bounds x="654" y="230" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="646" y="287" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_09xni5k_di" bpmnElement="ScriptTask_09xni5k">
+        <dc:Bounds x="775" y="215" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_17k8swj_di" bpmnElement="SequenceFlow_17k8swj">
+        <di:waypoint x="175" y="255" />
+        <di:waypoint x="236" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ds7ec7_di" bpmnElement="SequenceFlow_0ds7ec7">
+        <di:waypoint x="286" y="255" />
+        <di:waypoint x="383" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_11a9svd_di" bpmnElement="SequenceFlow_11a9svd">
+        <di:waypoint x="261" y="280" />
+        <di:waypoint x="261" y="397" />
+        <di:waypoint x="383" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_04rqo6z_di" bpmnElement="SequenceFlow_04rqo6z">
+        <di:waypoint x="483" y="255" />
+        <di:waypoint x="524" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_197831w_di" bpmnElement="SequenceFlow_197831w">
+        <di:waypoint x="483" y="397" />
+        <di:waypoint x="549" y="397" />
+        <di:waypoint x="549" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ihk2ik_di" bpmnElement="SequenceFlow_0ihk2ik">
+        <di:waypoint x="574" y="255" />
+        <di:waypoint x="654" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_19ub73y_di" bpmnElement="SequenceFlow_19ub73y">
+        <di:waypoint x="704" y="255" />
+        <di:waypoint x="775" y="255" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="731" y="237" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0w7r44v_di" bpmnElement="SequenceFlow_0w7r44v">
+        <di:waypoint x="679" y="230" />
+        <di:waypoint x="679" y="143" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="687" y="184" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1l3ufaz_di" bpmnElement="SequenceFlow_1l3ufaz">
+        <di:waypoint x="875" y="255" />
+        <di:waypoint x="970" y="255" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
