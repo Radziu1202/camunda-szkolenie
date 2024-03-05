@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0svolxs" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <decision id="decyzjaKredytu" name="weryfikacja kredytu">
+    <decisionTable id="DecisionTable_0hl79q8" hitPolicy="FIRST">
+      <input id="Input_1" label="zarobki">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>zarobki</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ni9xxh" label="lata pracy">
+        <inputExpression id="LiteralExpression_1dq17zo" typeRef="number">
+          <text>lataPracy</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1u96xrg" label="aktywny kredyt">
+        <inputExpression id="LiteralExpression_0i03vqi" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1vxm4ff" label="karany">
+        <inputExpression id="LiteralExpression_022h9ng" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Kredyt udzielony" typeRef="boolean" />
+      <output id="OutputClause_163bmbx" label="kwota" name="kwota" typeRef="number" />
+      <rule id="DecisionRule_1ufgfde">
+        <inputEntry id="UnaryTests_1g27kfc">
+          <text>&gt;=10000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06pxuk2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yjzn0p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vpkixq">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19he4jx">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17ytu0e">
+          <text>zarobki*lataPracy</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v4umzv">
+        <inputEntry id="UnaryTests_0evea0d">
+          <text>&gt;=5000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ycksbv">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ftoz2n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z5wink">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03pyld1">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_058cupm">
+          <text>zarobki*lataPracy</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01milmh">
+        <inputEntry id="UnaryTests_1bmp9x3">
+          <text>&gt;=2000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tb30gf">
+          <text>&gt;=10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14s97rh">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15xcx9b">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qhexnx">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08nhg47">
+          <text>zarobki*lataPracy</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_006jovz">
+        <inputEntry id="UnaryTests_1yqwjzo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rfknek">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_073fu9f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sgfoh7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vyuyho">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xbsfrx">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="decyzjaKredytu">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

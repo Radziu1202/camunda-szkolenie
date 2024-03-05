@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_05yddgo" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <decision id="Decision_1k1ylqm" name="Zadanie szkolenie">
+    <decisionTable id="DecisionTable_0r7tg4l" hitPolicy="COLLECT">
+      <input id="Input_1" label="lata pracy">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1lblhi4" label="pochwały" biodi:width="192">
+        <inputExpression id="LiteralExpression_0q1649f" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1xxshof" label="darmowe nadgodziny">
+        <inputExpression id="LiteralExpression_08qw8ag" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0j1ada5" label="liczba spóźnień" biodi:width="192">
+        <inputExpression id="LiteralExpression_183xxir" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0p2r1ln" label="liczba integracji">
+        <inputExpression id="LiteralExpression_1b8f686" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_14fj351" label="liczba telefonów">
+        <inputExpression id="LiteralExpression_02eflaf" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="odznaka" typeRef="string" />
+      <rule id="DecisionRule_00ema25">
+        <inputEntry id="UnaryTests_10g4mey">
+          <text>&gt;=5 </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11d14bs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oqy1r0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ihdqk8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1es0akq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tm9k48">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lmwda7">
+          <text>"Weteran"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0462k7u">
+        <inputEntry id="UnaryTests_0znvrsa">
+          <text>&gt;=2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xur7pp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15wh6r4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v9uy7o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hcmrgu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fqianh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cvu6em">
+          <text>"Doświadczony"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s9k4g6">
+        <inputEntry id="UnaryTests_11ldbng">
+          <text>&lt;2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sg4wg3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n0k7es">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io5wkb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0147ewo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v3gihz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lnrm4p">
+          <text>"Świeżak"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pk2n4g">
+        <inputEntry id="UnaryTests_126e42i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w9bv6a">
+          <text>&gt;=5 </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00ail7z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rcw3gz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d74cfo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q3ehfg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10uk3fq">
+          <text>"Pupil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09dyr9o">
+        <inputEntry id="UnaryTests_1oqiac7">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1arr0db">
+          <text>&gt;=10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wghdyt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1z0klgs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14js06f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kyflfe">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16bdzaq">
+          <text>"Ulubieniec"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02zvx1i">
+        <inputEntry id="UnaryTests_1ldjipm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m9zuo9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lyiarw">
+          <text>&gt;=50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01b53gf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r0ursm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g4woct">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m2g1tu">
+          <text>"Pracuś"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hoa1mj">
+        <inputEntry id="UnaryTests_0s9ac28">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wu3hlj">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f3joch">
+          <text>&gt;=100</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12m5xux">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ujpbmr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0068gv6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v5xp0a">
+          <text>"Zaprawiony w boju"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jz684o">
+        <inputEntry id="UnaryTests_1lbv6gq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s508d3">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ndow9t">
+          <text>&lt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03cl1lb">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00nj2sn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wgnml2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kvb0vv">
+          <text>"Spóźnialski"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18y6k69">
+        <inputEntry id="UnaryTests_1h1h54y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17n8j9f">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gxgrk8">
+          <text>&lt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_050k6ue">
+          <text>&gt;8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qood80">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0812r29">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hgn28h">
+          <text>"Urlop przymusowy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r9vdjf">
+        <inputEntry id="UnaryTests_0xgt8vk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_050o1mi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_063os2h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vce5nv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02cmduc">
+          <text>&gt;=6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0087nvp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pn9c5i">
+          <text>"Dusza towarzystwa"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11lzezu">
+        <inputEntry id="UnaryTests_02orgax">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aptcqh">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10r1712">
+          <text>&lt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fuigl4">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s15gq7">
+          <text>&gt;=12</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uy8ley">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16dqcrf">
+          <text>"Imprezowicz"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xcm9z1">
+        <inputEntry id="UnaryTests_09535w0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0isdlk3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h9fo5v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lcvrqc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ew5tk7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p5k4b4">
+          <text>&gt;=100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pyc887">
+          <text>"Gaduła"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fyexyn">
+        <inputEntry id="UnaryTests_0nqwm51">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t4qqzh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0615psh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xeeise">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f65dwg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gwmmku">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jmifj7">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1k1ylqm">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
